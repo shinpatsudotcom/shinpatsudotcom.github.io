@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<h1>
+  {{ page.title }}
+</h1>
+
+{% if page.image %}
+  <img src="{{ site.github.url }}/assets/img/{{ page.image }}">
+{% endif %}
+
+{{ content }}
+
+<span class="post-date">
+  {{ site.data.settings.post_date_prefix }}
+  ngày 
+  {{ page.date | date: "%-d" }}
+  tháng
+  {{ page.date | date: "%-m" }}
+  năm
+  {{ page.date | date: "%Y" }}
+  bởi
+  {% if page.author %}
+    {{ page.author }}
+  {% else %}
+    {{ site.author }}
+  {% endif %}
+</span>
+
+{% include social-sharing.html %}
+
+{% include related-posts.html %}
+
+{% if site.data.settings.disqus.comments %}
+  {% include disqus.html %}
+{% endif %}
